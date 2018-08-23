@@ -18,21 +18,22 @@ int _tmain(int argc, _TCHAR* argv[])
 	utcStru.hour = 16;
 	utcStru.minutes = 10;
 	utcStru.seconds = 0;
-	sprintf(buffer, "Old Time:%d-%d-%d %d:%d:%d", utcStru.year,
+	sprintf(buffer, "Old UTC Time:%d-%d-%d %d:%d:%d", utcStru.year,
 		utcStru.month, utcStru.day, utcStru.hour, utcStru.minutes, utcStru.seconds);
 	cout<<buffer<<endl;
 
 	UTCTime utcTime = UTC_convertUTCSecs(&utcStru);
-	cout<<"Utc time:"<<utcTime<<endl;
+	cout<<"Old UTC seconds:"<<utcTime<<endl;
 
-	utcTime = 536158950;
+	utcTime += 500;
 
 	UTCTimeStruct utcNewStru;
 	UTC_convertUTCTime(utcTime, &utcNewStru);
-	cout<<"-------------------------"<<endl;
-	sprintf(buffer, "New Time:%d-%d-%d %d:%d:%d", utcNewStru.year,
+	cout<<"After increase utc time by 500 seconds."<<endl;
+	sprintf(buffer, "New UTC Time:%d-%d-%d %d:%d:%d", utcNewStru.year,
 		utcNewStru.month, utcNewStru.day, utcNewStru.hour, utcNewStru.minutes, utcNewStru.seconds);
 	cout<<buffer<<endl;
+	cout<<"New UTC seconds:"<<utcTime<<endl;
 
 	return 0;
 }
